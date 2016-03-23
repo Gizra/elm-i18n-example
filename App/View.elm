@@ -3,9 +3,9 @@ module App.View where
 import App.Model as App exposing (Model)
 import App.Update exposing (Action(..))
 
-import Html exposing (div, h2, i, li, node, span, text, ul, button, Attribute, Html)
-import Html.Attributes exposing (class, classList, disabled, id, href, style, target, attribute)
-import Html.Events exposing (onClick)
+import Html exposing (button, div, input, text, Attribute, Html)
+import Html.Attributes exposing (action, class, disabled, id, hidden, href, placeholder, required, size, style, type', value)
+import Html.Events exposing (on, onClick, targetValue)
 import Translation.Utils exposing (..)
 
 view : Signal.Address Action -> Model -> Html
@@ -13,7 +13,7 @@ view address model =
     div
       [ containerStyle ]
       [ viewLanguageSwitcher address model.currentLanguage
-      , viewWelcomeMessage model.currentLanguage
+      , viewWelcomeMessage address model
       ]
 
 
@@ -39,12 +39,19 @@ viewLanguageSwitcher address lang =
       , button' Spanish "Spanish"
       ]
 
-viewWelcomeMessage : Language -> Html
-viewWelcomeMessage lang =
+viewWelcomeMessage : Signal.Address Action -> Model -> Html
+viewWelcomeMessage address model =
   div
     []
-    [ div [ elementStyle ] [ text <| translate lang Login ]
-    , div [ elementStyle ] [ text <| translate lang <| WelcomeBack {name = "elmlang"} ]
+    [ div [ elementStyle ] [ text <| translate model.currentLanguage Login ]
+    , div [ elementStyle ] [ text <| translate model.currentLanguage <| WelcomeBack { name = model.name } ]
+    , input
+      [ type' "text"
+      , placeholder "Name"
+      , value model.name
+      , on "input" targetValue (Signal.message address << SetName)
+      ]
+      []
     ]
 
 containerStyle : Attribute

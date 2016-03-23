@@ -17,11 +17,17 @@ init =
 
 type Action
   = SetLanguage Language
+  | SetName String
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
     SetLanguage lang ->
       ( {model | currentLanguage = lang}
+      , Effects.none
+      )
+
+    SetName str ->
+      ( {model | name = str}
       , Effects.none
       )
