@@ -1,4 +1,9 @@
-module App.Update where
+module App.Update
+  (Action (..)
+  , init
+  , update
+  )
+  where
 
 import App.Model as App exposing (initialModel, Model)
 import Effects exposing (none, Effects)
