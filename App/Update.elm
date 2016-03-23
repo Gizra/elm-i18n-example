@@ -1,7 +1,8 @@
 module App.Update where
 
 import App.Model as App exposing (initialModel, Model)
-import Effects exposing (none)
+import Effects exposing (none, Effects)
+import Translation.Utils exposing (..)
 
 init : (Model, Effects Action)
 init =
@@ -16,6 +17,6 @@ update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
     SetLanguage lang ->
-      ( {model | language = lang}
+      ( {model | currentLanguage = lang}
       , Effects.none
       )
