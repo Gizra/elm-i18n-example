@@ -27,4 +27,8 @@ viewLanguageSwitcher address lang =
 
 viewWelcomeMessage : Language -> Html
 viewWelcomeMessage lang =
-  div [] [text <| translate lang <| WelcomeBack {name = "elmlang"}]
+  div
+    []
+    [ div [] [ text <| translate lang Login ]
+    , div [] [ text <| translate lang <| WelcomeBack {name = "elmlang"} ]
+    ]
