@@ -69,6 +69,4 @@ containerStyle =
 elementStyle : Attribute
 elementStyle =
   style
-    [ ("margin-bottom", "20px")
-
-    ]
+    [ ("margin-bottom", "20px") ]
