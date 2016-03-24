@@ -4,4 +4,9 @@
 
 Read the [blog post](http://gizra.com/content/elm-i18n-type-safety)
 
-App: Run `elm-reactor` and open http://localhost:8000/Main.elm
+## Execute
+
+Run `elm-reactor`
+
+App: http://localhost:8000/Main.elm
+Tests: http://localhost:8000/TestRunner.elm
