@@ -10,3 +10,8 @@ Run `elm-reactor`
 
 App: http://localhost:8000/Main.elm
 Tests: http://localhost:8000/TestRunner.elm
+
+## Resources
+
+- Script for generating Elm translations from JSON files:
+  [i18n-to-elm](https://github.com/dragonwasrobot/i18n-to-elm)
